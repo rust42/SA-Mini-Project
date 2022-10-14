@@ -7,3 +7,6 @@
 [submodule "sa-auth-servce-mini-project"]
 	path = sa-auth-servce-mini-project
 	url = https://github.com/devbinod/sa-auth-servce-mini-project.git
+[submodule "sa-transaction-servce-mini-project"]
+	path = sa-transaction-servce-mini-project
+	url = https://github.com/devbinod/sa-transaction-servce-mini-project.git
