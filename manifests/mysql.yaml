@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  clusterIP: None
+  selector:
+    app: mysql-app
+  ports:
+    - port: 3306
+      targetPort: 3306
+
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: mysql-app
+  name: mysql-app
+spec:
+  selector:
+    matchLabels:
+      app: mysql-app
+
+  serviceName: mysql-svc
+  template:
+    metadata:
+      labels:
+        app: mysql-app
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          resources:
+            requests:
+              memory: "265Mi"
+              cpu: "250m"
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MYSQL_ROOT_PASSWORD
+                  name: common-secrets
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-vol
+
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-vol
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 25Gi
+
+
+
+

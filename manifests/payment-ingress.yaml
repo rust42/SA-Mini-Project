@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: payment-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/payment_methods
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 3050
+          - path: /api/purchase
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 3050
+
+

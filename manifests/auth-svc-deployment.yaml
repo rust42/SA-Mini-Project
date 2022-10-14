@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-svc-app
+  labels:
+    app: auth-svc-app
+spec:
+  selector:
+    matchLabels:
+      app: auth-svc-app
+  template:
+    metadata:
+      labels:
+        app: auth-svc-app
+    spec:
+      containers:
+        - name: auth-service-container
+          image: skoirala/sa-miniproject-auth-service
+          envFrom:
+            - configMapRef:
+                name: common-configmap
+            - secretRef:
+                name: common-secrets
+                
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-svc
+spec:
+  selector:
+    app: auth-svc-app
+  type: ClusterIP
+  ports:
+    - port: 3051
+      targetPort: 8080
