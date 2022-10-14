@@ -33,5 +33,5 @@ spec:
     app: auth-svc-app
   type: ClusterIP
   ports:
-    - port: 3051
+    - port: 80
       targetPort: 8080

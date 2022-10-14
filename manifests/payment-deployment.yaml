@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: payment-svc-app
+  labels:
+    app: payment-svc-app
+
+spec:
+  selector:
+    matchLabels:
+      app: payment-svc-app
+
+  template:
+    metadata:
+      labels:
+        app: payment-svc-app
+    spec:
+      containers:
+        - name: payment-svc-app
+          image: skoirala/sa-miniproject-payment-service
+          ports:
+            - containerPort: 8080
+          envFrom:
+              - secretRef:
+                  name: common-secrets
+              - configMapRef:
+                  name: common-configmap
+              - configMapRef:
+                  name: payment-app-configs
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: payment-svc-app
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: payment-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/payment_methods
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 80
+          - path: /api/purchase
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 80
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-app-configs
+data:
+  DATABASE_NAME: PaymentDB

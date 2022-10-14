@@ -4,7 +4,9 @@ metadata:
   name: common-configmap
 data:
   SPRING_PROFILES_ACTIVE: prod
-  AUTH_SERVICE_ENDPOINT: auth-svc:3051/api
+  AUTH_SERVICE_ENDPOINT: auth-svc/api
+  DB_HOST: mysql-svc:3306
+
 
 
 

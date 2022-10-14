@@ -10,3 +10,9 @@
 [submodule "sa-transaction-servce-mini-project"]
 	path = sa-transaction-servce-mini-project
 	url = https://github.com/devbinod/sa-transaction-servce-mini-project.git
+[submodule "eStoreOrder"]
+	path = eStoreOrder
+	url = https://github.com/jenish628/eStoreOrder.git
+[submodule "e-store"]
+	path = e-store
+	url = https://github.com/jenish628/e-store.git
