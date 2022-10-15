@@ -75,3 +75,4 @@ metadata:
   name: payment-app-configs
 data:
   DATABASE_NAME: PaymentDB
+  TRANSACTION_SERVICE_ENDPOINT: tx-svc/api
