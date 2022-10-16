@@ -26,6 +26,8 @@ spec:
           envFrom:
             - secretRef:
                 name: common-secrets
+            - secretRef:
+                name: mysql-secrets
             - configMapRef:
                 name: common-configmap
             - configMapRef:
@@ -37,7 +39,7 @@ kind: ConfigMap
 metadata:
   name: product-app-config
 data:
-  DATABASE_NAME: ProductionDB
+  DATABASE_NAME: ProductDB
 
 
 ---
