@@ -1,6 +1,6 @@
 [submodule "PaymentService"]
 	path = PaymentService
-	url = git@github.com:rust42/SAPaymentService.git
+	url = https://github.com/rust42/SAPaymentService.git
 [submodule "sa-address-servce-mini-project"]
 	path = sa-address-servce-mini-project
 	url = https://github.com/devbinod/sa-address-servce-mini-project.git

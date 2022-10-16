@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: product-app
+  labels:
+    app: product-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-app
+  template:
+    metadata:
+      labels:
+        app: product-app
+    spec:
+      containers:
+        - name: product-app
+          image: pantbinod/sa-miniproject-product-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: common-secrets
+            - configMapRef:
+                name: common-configmap
+            - configMapRef:
+                name: product-app-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-app-config
+data:
+  DATABASE_NAME: ProductionDB
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app.kubernetes.io/name: product-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: product-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/products
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 80
