@@ -23,6 +23,9 @@ spec:
                 name: common-configmap
             - configMapRef:
                 name: transaction-app-config
+            - secretRef:
+                name: mysql-secrets
+
 
 ---
 apiVersion: v1

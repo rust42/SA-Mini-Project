@@ -40,8 +40,8 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: MYSQL_ROOT_PASSWORD
-                  name: common-secrets
+                  key: DB_PASSWORD
+                  name: mysql-secrets
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mysql-vol

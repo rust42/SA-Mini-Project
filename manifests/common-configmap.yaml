@@ -5,7 +5,6 @@ metadata:
 data:
   SPRING_PROFILES_ACTIVE: prod
   AUTH_SERVICE_ENDPOINT: auth-svc/api
-  DB_HOST: mysql-svc:3306
 
 
 
