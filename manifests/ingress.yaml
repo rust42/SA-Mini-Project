@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /api/auth
+            backend:
+              service:
+                name: auth-svc
+                port:
+                  number: 80
+
+          - pathType: Prefix
+            path: /api/payment_methods
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 80
+
+          - pathType: Prefix
+            path: /api/purchase
+            backend:
+              service:
+                name: payment-svc
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: /api/transactions
+            backend:
+              service:
+                name: tx-svc
+                port:
+                  number: 80
+
+
