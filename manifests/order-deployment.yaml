@@ -41,7 +41,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: order-svc
+    app: order-svc-app
   ports:
     - port: 80
       targetPort: 8080
@@ -55,5 +55,5 @@ metadata:
 data:
   DATABASE_NAME: OrderDB
   PAYMENT_SERVICE_ENDPOINT: payment-svc/api
-  PRODUCT_SERVICE_ENDPOINT: product-service/api
-  ADDRESS_SERVICE_ENDPOINT: address-service/api
+  PRODUCT_SERVICE_ENDPOINT: product-svc/api
+  ADDRESS_SERVICE_ENDPOINT: address-svc/api
