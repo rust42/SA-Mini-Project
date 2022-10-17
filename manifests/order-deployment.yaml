@@ -27,7 +27,7 @@ spec:
             - configMapRef:
                 name: common-configmap
             - configMapRef:
-                name: payment-app-configs
+                name: order-app-configs
             - secretRef:
                 name: mysql-secrets
 

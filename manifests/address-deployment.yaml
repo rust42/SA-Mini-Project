@@ -50,7 +50,7 @@ metadata:
   name: address-svc
 spec:
   selector:
-    app.kubernetes.io/name: address-app
+    app: address-app
   ports:
     - protocol: TCP
       port: 80
