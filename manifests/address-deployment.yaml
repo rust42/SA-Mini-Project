@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: product-app
+  name: address-app
   labels:
-    app: product-app
+    app: address-app
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: product-app
+      app: address-app
   template:
     metadata:
       labels:
-        app: product-app
+        app: address-app
     spec:
       containers:
-        - name: product-app
-          image: pantbinod/sa-miniproject-product-service
+        - name: address-app
+          image: pantbinod/sa-miniproject-address-service
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -31,15 +31,15 @@ spec:
             - configMapRef:
                 name: common-configmap
             - configMapRef:
-                name: product-app-config
+                name: address-app-config
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: product-app-config
+  name: address-app-config
 data:
-  DATABASE_NAME: ProductDB
+  DATABASE_NAME: AddressDB
 
 
 ---
@@ -47,10 +47,10 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: product-svc
+  name: address-svc
 spec:
   selector:
-    app.kubernetes.io/name: product-app
+    app.kubernetes.io/name: address-app
   ports:
     - protocol: TCP
       port: 80

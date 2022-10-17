@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: order-svc-app
+  labels:
+    app: order-svc-app
+
+spec:
+  selector:
+    matchLabels:
+      app: order-svc-app
+
+  template:
+    metadata:
+      labels:
+        app: order-svc-app
+    spec:
+      containers:
+        - name: order-svc-app
+          image: pantbinod/sa-miniproject-order-service
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: common-secrets
+            - configMapRef:
+                name: common-configmap
+            - configMapRef:
+                name: payment-app-configs
+            - secretRef:
+                name: mysql-secrets
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: order-svc
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-app-configs
+data:
+  DATABASE_NAME: OrderDB
+  PAYMENT_SERVICE_ENDPOINT: payment-svc/api
+  PRODUCT_SERVICE_ENDPOINT: product-service/api
+  ADDRESS_SERVICE_ENDPOINT: address-service/api
