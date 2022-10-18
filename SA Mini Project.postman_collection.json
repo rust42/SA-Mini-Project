@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "126a7796-aa1d-46ea-bf3c-920fcff9e132",
+		"_postman_id": "acde572c-d3aa-4f90-996a-0cd5a7731a66",
 		"name": "SA Mini Project",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "15670901"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -521,11 +520,21 @@
 				{
 					"name": "Payment-checkout",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"orderId\":\"515ab871-9aa2-4c38-8032-22bae1e2ebab\",\n    \"paymentMethodId\":1\n}",
+							"raw": "{\n    \"orderId\":\"96529088-ef49-48ca-aafa-66990db2ebbb\",\n    \"paymentMethodId\":1,\n    \"addressId\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
