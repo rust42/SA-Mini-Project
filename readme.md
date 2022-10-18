@@ -51,7 +51,7 @@ working flow:
 
 Login using `{{BASE_URL}}/api/auth/login`
 
-Fist add category, for detail see category folder.
+First add category, for detail see category folder.
 
 Then Add product, for product see product folder.
 
