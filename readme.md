@@ -7,7 +7,14 @@ Software Installation Prerequisites
 
 <b>Download the project, unzip and goto project folder</b>.
 
+If using minukube on mac, You have to run the following commands:
+
+1. minikube addons enable ingress
+2. minikube addons enable ingress-dns
+3. minikube tunnel
+
 To run this project using kubernetes. Goto setup folder `cd setup`
+
 
 and change permission of the startup sh using `chmod +x start.sh`
 
@@ -51,14 +58,12 @@ goto setup folder and enter following command. `chmod +x delete.sh && ./delete.s
 
 Login using `{{BASE_URL}}/api/auth/login`
 
-First add category, for detail see category folder.
+Steps for the overall process:
 
-Then Add product, for product see product folder.
-
-Before creating an order, we need to add address and payment 
-for adding address, see address folder 
-
-For payment, see payment folder.
-
-After adding product, then we will create an order and checkout order for that, use order folder as a reference.
-
+1. Add Category to add the products, As product depends upon the category
+2. Add Product, It accepts the category id
+3. For adding the payment method, There are 3-different payment methods,  The address must be added.
+4. Add the address and then the payment method.
+5. Add any type of items and any number of it to the cart
+6. Select the payment checkout option.
+7. This will take order id and address id and the process is complete.   
