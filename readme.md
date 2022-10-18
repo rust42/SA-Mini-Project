@@ -1,4 +1,4 @@
-Mini Project2
+<b>Mini Project2</b>
 
 Software Installation Prerequisites
 
@@ -15,11 +15,11 @@ then run project using `./start.sh`
 
 In this Project, We have a 6 services.
 
-<b>1) Product Service
-2) Order Service
-3) Address Service(used for billing and shipping address)
-4) Transaction Service
-5) Payment Services
+<b>1) Product Service<br/>
+2) Order Service <br/>
+3) Address Service(used for billing and shipping address)<br/>
+4) Transaction Service<br/>
+5) Payment Services<br/>
 6) Authorization Service</b>
 
 <b>Database</b> -> `MySQL`
