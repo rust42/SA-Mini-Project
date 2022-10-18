@@ -45,9 +45,9 @@ for deleting all the pods,services, ingress, configmap, secret
 goto setup folder and enter following command. `chmod +x delete.sh && ./delete.sh`
 
 
-To see output using following postman collection.
+`To see output and working flow of the project, you need to import postman collection in your postman app. then do following operation.`
 
-working flow:
+<b>working flow:</b>
 
 Login using `{{BASE_URL}}/api/auth/login`
 
