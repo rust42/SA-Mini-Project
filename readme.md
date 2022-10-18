@@ -43,3 +43,22 @@ to view secrets `kubectl get secrets`
 
 for deleting all the pods,services, ingress, configmap, secret
 goto setup folder and enter following command. `chmod +x delete.sh && ./delete.sh`
+
+
+To see output using following postman collection.
+
+working flow:
+
+Login using `{{BASE_URL}}/api/auth/login`
+
+Fist add category, for detail see category folder.
+
+Then Add product, for product see product folder.
+
+Before creating an order, we need to add address and payment 
+for adding address, see address folder 
+
+For payment, see payment folder.
+
+After adding product, then we will create an order and checkout order for that, use order folder as a reference.
+
