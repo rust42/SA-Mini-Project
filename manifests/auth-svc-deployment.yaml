@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: auth-service-container
-          image: skoirala/sa-miniproject-auth-service
+          image: skoirala/pantbinod/sa-miniproject-auth-service
           envFrom:
             - configMapRef:
                 name: common-configmap
